@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.paniolweb.apppaniol.entities.Herramienta;
+import com.paniolweb.apppaniol.exceptions.ResourceNotFoundException;
 import com.paniolweb.apppaniol.repositories.HerramientaRepository;
 
 @Service
@@ -22,7 +23,7 @@ public class HerramientaServiceImpl implements HerramientaService {
     @Override
     public Herramienta obtenerPorId(Long id) {
         return herramientaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("No se encontró la herramienta con id " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("No se encontró la herramienta con id " + id));
     }
 
     @Override
@@ -33,7 +34,7 @@ public class HerramientaServiceImpl implements HerramientaService {
     @Override
     public Herramienta actualizar(Long id, Herramienta herramientaDetails) {
         Herramienta herramienta = herramientaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("No se encontró la herramienta con id " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("No se encontró la herramienta con id " + id));
 
         herramienta.setNombre(herramientaDetails.getNombre());
         herramienta.setCantidad(herramientaDetails.getCantidad());
@@ -44,7 +45,7 @@ public class HerramientaServiceImpl implements HerramientaService {
     @Override
     public void eliminar(Long id) {
         Herramienta herramienta = herramientaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("No se encontró la herramienta con id " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("No se encontró la herramienta con id " + id));
 
         herramientaRepository.delete(herramienta);
     }
