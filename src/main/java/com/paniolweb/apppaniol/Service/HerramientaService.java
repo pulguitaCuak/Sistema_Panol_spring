@@ -1,8 +1,9 @@
-package com.paniolweb.apppaniol.Service;
+package com.paniolweb.apppaniol.service;
 
 import java.util.List;
 
-import com.paniolweb.apppaniol.Entities.Herramienta;
+import com.paniolweb.apppaniol.entities.Herramienta;
+
 
 public interface HerramientaService {
 

@@ -1,12 +1,12 @@
-package com.paniolweb.apppaniol.Service;
+package com.paniolweb.apppaniol.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.paniolweb.apppaniol.Entities.Herramienta;
-import com.paniolweb.apppaniol.Repositories.HerramientaRepository;
+import com.paniolweb.apppaniol.entities.Herramienta;
+import com.paniolweb.apppaniol.repositories.HerramientaRepository;
 
 @Service
 public class HerramientaServiceImpl implements HerramientaService {

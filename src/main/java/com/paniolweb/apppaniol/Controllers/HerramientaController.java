@@ -1,4 +1,4 @@
-package com.paniolweb.apppaniol.Controllers;
+package com.paniolweb.apppaniol.controllers;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.paniolweb.apppaniol.Entities.Herramienta;
-import com.paniolweb.apppaniol.Service.HerramientaService;
+import com.paniolweb.apppaniol.entities.Herramienta;
+import com.paniolweb.apppaniol.service.HerramientaService;
 
 @RestController
 @RequestMapping("/herramientas")
