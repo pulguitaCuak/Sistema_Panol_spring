@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.paniolweb.apppaniol.entities.Usuario;
+import com.paniolweb.apppaniol.enums.EstadoUsuario;
 import com.paniolweb.apppaniol.enums.cargoUsuario;
 import com.paniolweb.apppaniol.exceptions.ResourceNotFoundException;
 import com.paniolweb.apppaniol.repositories.UsuarioRepository;
@@ -56,7 +57,16 @@ public class UsuarioServiceImpl implements UsuarioService {
     public void eliminar(Long id) {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontro el usuario con la Id" + id));
-        usuarioRepository.delete(usuario);
+        usuario.setEstado(EstadoUsuario.INACTIVO);
+        usuarioRepository.save(usuario);
+    }
+
+    @Override
+    public Usuario cambiarEstado(Long id, EstadoUsuario estado) {
+        Usuario usuario = usuarioRepository.findById(id)
+            .orElseThrow(()-> new ResourceNotFoundException("No se encontro el usuario con la Id " + id));
+            usuario.setEstado(estado);
+            return usuarioRepository.save(usuario);
     }
 
 }

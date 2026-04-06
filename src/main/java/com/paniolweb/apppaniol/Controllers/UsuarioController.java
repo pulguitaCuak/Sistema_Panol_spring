@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.paniolweb.apppaniol.entities.Usuario;
+import com.paniolweb.apppaniol.enums.EstadoUsuario;
 import com.paniolweb.apppaniol.enums.cargoUsuario;
 import com.paniolweb.apppaniol.service.UsuarioService;
 
@@ -61,6 +62,11 @@ public class UsuarioController {
     @PatchMapping("/{id}/cargo")
     public ResponseEntity<Usuario> updateCargo(@PathVariable Long id , @RequestBody cargoUsuario cargo){
         Usuario actualizado = usuarioService.cambiarCargo(id, cargo);
+        return ResponseEntity.ok(actualizado);
+    }
+    @PatchMapping("/{id}/estado")
+    public ResponseEntity<Usuario> updateEstado(@PathVariable Long id , @RequestBody EstadoUsuario estado){
+        Usuario actualizado = usuarioService.cambiarEstado(id, estado);
         return ResponseEntity.ok(actualizado);
     }
 }

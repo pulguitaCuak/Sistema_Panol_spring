@@ -1,6 +1,8 @@
 package com.paniolweb.apppaniol.entities;
 
 import java.time.LocalDateTime;
+
+import com.paniolweb.apppaniol.enums.EstadoUsuario;
 import com.paniolweb.apppaniol.enums.cargoUsuario;
 
 import jakarta.persistence.Column;
@@ -11,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -28,9 +31,18 @@ public class Usuario {
     private Long dni;
     @NotBlank(message = "El Usuario debe tener una contraseña")
     private String contrasena;
-
+    @NotEmpty
+    private EstadoUsuario estado;
     @Enumerated
     private cargoUsuario cargo;
+
+    public EstadoUsuario getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoUsuario estado) {
+        this.estado = estado;
+    }
 
     public cargoUsuario getCargo() {
         return cargo;

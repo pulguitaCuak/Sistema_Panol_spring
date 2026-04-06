@@ -3,6 +3,7 @@ package com.paniolweb.apppaniol.service;
 import java.util.List;
 
 import com.paniolweb.apppaniol.entities.Usuario;
+import com.paniolweb.apppaniol.enums.EstadoUsuario;
 import com.paniolweb.apppaniol.enums.cargoUsuario;
 
 public interface UsuarioService {
@@ -17,4 +18,6 @@ public interface UsuarioService {
     void eliminar(Long id);
 
     Usuario cambiarCargo(Long id, cargoUsuario cargo);
+
+    Usuario cambiarEstado(Long id, EstadoUsuario estado);
 }
