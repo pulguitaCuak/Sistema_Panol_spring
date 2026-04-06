@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
 @RestController
 @RequestMapping("/Insumos")
 public class InsumoController {
@@ -35,6 +34,7 @@ public class InsumoController {
         List<Insumo> insumos = InsumoService.ObtenerTodos();
         return ResponseEntity.ok(insumos);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Insumo> getInsumoById(@PathVariable Long id) {
         Insumo insumos = InsumoService.obtenerPorId(id);
@@ -42,17 +42,19 @@ public class InsumoController {
     }
 
     @PostMapping
-    public ResponseEntity<Insumo> createHerramienta(@RequestBody Insumo insumo){
-    Insumo nuevo = InsumoService.crearInsumo(insumo);
-    return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
+    public ResponseEntity<Insumo> createHerramienta(@RequestBody Insumo insumo) {
+        Insumo nuevo = InsumoService.crearInsumo(insumo);
+        return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
     }
+
     @PutMapping("/{id}")
-    public ResponseEntity<Insumo> updateInsumo(@PathVariable Long id, @RequestBody Insumo insumoDetails){
-    Insumo actualizado = InsumoService.actualizar(id, insumoDetails);
-    return ResponseEntity.ok(actualizado);
+    public ResponseEntity<Insumo> updateInsumo(@PathVariable Long id, @RequestBody Insumo insumoDetails) {
+        Insumo actualizado = InsumoService.actualizar(id, insumoDetails);
+        return ResponseEntity.ok(actualizado);
     }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteInsumo (@PathVariable Long id){
+    public ResponseEntity<Void> deleteInsumo(@PathVariable Long id) {
         InsumoService.eliminar(id);
         return ResponseEntity.noContent().build();
     }

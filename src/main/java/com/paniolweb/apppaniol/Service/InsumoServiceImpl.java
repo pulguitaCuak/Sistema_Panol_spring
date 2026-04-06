@@ -1,4 +1,5 @@
 package com.paniolweb.apppaniol.service;
+
 import com.paniolweb.apppaniol.entities.Insumo;
 import com.paniolweb.apppaniol.exceptions.ResourceNotFoundException;
 import com.paniolweb.apppaniol.repositories.InsumoRepository;
@@ -22,7 +23,7 @@ public class InsumoServiceImpl implements InsumoService {
     @Override
     public Insumo obtenerPorId(Long id) {
         return InsumoRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("No se encontro el insumo con la id " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("No se encontro el insumo con la id " + id));
     }
 
     @Override
@@ -33,18 +34,19 @@ public class InsumoServiceImpl implements InsumoService {
     @Override
     public Insumo actualizar(Long id, Insumo insumoDetails) {
         Insumo Insumo = InsumoRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("No se encontro insumo para actualizar con la ID " + id));
-            Insumo.setNombre(insumoDetails.getNombre());
-            Insumo.setCantidad(insumoDetails.getCantidad());
-            Insumo.setUnidadMedida(insumoDetails.getUnidadMedida());
-            return InsumoRepository.save(Insumo);
-    
-        }
+                .orElseThrow(
+                        () -> new ResourceNotFoundException("No se encontro insumo para actualizar con la ID " + id));
+        Insumo.setNombre(insumoDetails.getNombre());
+        Insumo.setCantidad(insumoDetails.getCantidad());
+        Insumo.setUnidadMedida(insumoDetails.getUnidadMedida());
+        return InsumoRepository.save(Insumo);
+
+    }
 
     @Override
     public void eliminar(Long id) {
         Insumo insumo = InsumoRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("No se encontro el insumo con id " + id));
-            InsumoRepository.delete(insumo);
-        }
+                .orElseThrow(() -> new ResourceNotFoundException("No se encontro el insumo con id " + id));
+        InsumoRepository.delete(insumo);
+    }
 }

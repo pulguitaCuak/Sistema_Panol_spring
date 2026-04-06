@@ -32,7 +32,7 @@ public class HerramientaController {
     @PostMapping
     public ResponseEntity<Herramienta> createHerramienta(@RequestBody Herramienta herramienta) {
         Herramienta nueva = herramientaService.crearHerramienta(herramienta);
-        return ResponseEntity.status(HttpStatus.CREATED).body(nueva); 
+        return ResponseEntity.status(HttpStatus.CREATED).body(nueva);
     }
 
     @PutMapping("/{id}")
