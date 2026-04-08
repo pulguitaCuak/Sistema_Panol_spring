@@ -17,7 +17,6 @@ public class Herramienta {
     private String nombre;
     @Min(value = 0, message = "La cantidad tiene que ser mayor a 0")
     private int cantidad;
-
     public Long getId() {
         return id;
     }
